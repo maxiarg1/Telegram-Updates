@@ -5,8 +5,8 @@ import schedule
 
 def bot_send_text(bot_message):
     
-    bot_token = 'TOKEN'
-    bot_chatID = 'CHATid'
+    bot_token = '1784682772:AAGQLQKZzRcall0nbORSo7Iv7jncKZZoFe0'
+    bot_chatID = '-544661504'
     send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
 
     response = requests.get(send_text)
@@ -43,12 +43,17 @@ def report():
     btc_price = f'Temperatura actual {btc_scraping()} \nTemperatura máxima {btc_scraping1()}\nTemperatura minima {btc_scraping2()}'
     bot_send_text(btc_price)
 
+def initia():
+    welcomeMessage = f'Estoy funcionando!'
+    bot_send_text(welcomeMessage)
+
 
 if __name__ == '__main__':
-        
-    
+    print("I'm working...")
+    initia()
     schedule.every().day.at("07:00").do(report)
     schedule.every().day.at("12:00").do(report)
+    schedule.every().day.at("13:15").do(report)    
     schedule.every().day.at("17:00").do(report)
 
     while True:
